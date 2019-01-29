@@ -11,6 +11,10 @@ namespace ConsoleApplication3
     {
         static void Main(string[] args)
         {
+            int ex = 0x08;
+            int check = 0xF0;
+
+            Console.WriteLine((ex & check));
             MyClass my = new MyClass();
             my.Handler();
         }
@@ -31,7 +35,8 @@ namespace ConsoleApplication3
             {
                 Console.WriteLine("Enter the number of nodes to be created: ");
                 string entrace = Console.ReadLine();
-                if (String.IsNullOrEmpty(entrace))
+                int check;
+                if (String.IsNullOrEmpty(entrace) || (!String.IsNullOrEmpty(entrace) && !Int32.TryParse(entrace, out check)))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("The number of nodes was note informed.");
